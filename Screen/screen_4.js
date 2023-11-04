@@ -1,13 +1,9 @@
-import { View, Text, StyleSheet, FlatList, Image, Pressable } from 'react-native'
-import React, { useState, useEffect } from 'react';
+import { View, Text, StyleSheet, Pressable, FlatList, Image } from 'react-native'
+import React, { useEffect, useState } from 'react'
 import Icon from 'react-native-vector-icons/Entypo';
-import { useNavigation } from '@react-navigation/native';
 
-
-const Screen_3 = () => {
+const screen_4 = () => {
     const [data, setData] = useState([])
-    
-    const navi3 = useNavigation();
 
     useEffect(() => {
         fetch("https://653f4af99e8bd3be29e02de4.mockapi.io/drinks")
@@ -19,6 +15,21 @@ const Screen_3 = () => {
     }, []);
     return (
         <View style={styles.container}>
+            <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', backgroundColor: '#00bdd6', width: '90%', height: '15%', borderRadius: 20, marginBottom: 10 }}>
+                <View style={{ marginLeft: 10, justifyContent: 'space-between', height: '75%' }}>
+                    <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#fff' }}>CAFE DELIVERY</Text>
+                    <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#fff' }}>Order #18</Text>
+                </View>
+                <Text style={{ marginRight: 10, fontSize: 25, fontWeight: 'bold', color: '#fff' }}>#5</Text>
+            </View>
+
+            <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', backgroundColor: '#8353e2', width: '90%', height: '15%', borderRadius: 20 }}>
+                <View style={{ marginLeft: 10, justifyContent: 'space-between', height: '75%' }}>
+                    <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#fff' }}>CAFE</Text>
+                    <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#fff' }}>Order #18</Text>
+                </View>
+                <Text style={{ marginRight: 10, fontSize: 25, fontWeight: 'bold', color: '#fff' }}>#25</Text>
+            </View>
             <FlatList
                 data={data}
                 renderItem={({ item }) =>
@@ -43,12 +54,13 @@ const Screen_3 = () => {
                     </View>
                 }
             />
-            <Pressable style={styles.btn} onPress={()=>{navi3.navigate('Your orders')}}>
-                <Text style={styles.btn_text}>GO TO CART</Text>
+            <Pressable style={{ marginTop: 100, borderRadius: 10, padding: 10, width: '90%', backgroundColor: '#efb034', justifyContent: 'center', alignItems: 'center' }} onPress={()=>{alert('paid successful')}}>
+                <Text style={{ color: '#fff' }}>PAY NOW</Text>
             </Pressable>
         </View>
     )
 }
+
 const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -87,30 +99,6 @@ const styles = StyleSheet.create({
     info_cont: {
         justifyContent: 'space-between'
     },
-    btn: {
-        padding: 10,
-        width: '90%',
-        backgroundColor: '#efb034',
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderRadius: 5,
-    },
-    btn_text: {
-        color: 'white',
-        fontSize: 20,
-        fontWeight: 'bold'
-    },
-    circle: {
-        backgroundColor: 'green',
-        height: 30,
-        width: 30,
-        borderRadius: 30,
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
-    text_cir: {
-        fontWeight: 'bold',
-        color: 'white'
-    }
+
 })
-export default Screen_3
+export default screen_4
